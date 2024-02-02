@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class empWageBuilderArray {
+public class empWageBuilderArray implements empWageBuilderInterface {
     public static final int IS_PART_TIME = 1;
     public static final int IS_FULL_TIME = 2;
 
