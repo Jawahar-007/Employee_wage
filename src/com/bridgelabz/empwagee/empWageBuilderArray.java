@@ -8,24 +8,29 @@ public class empWageBuilderArray implements empWageBuilderInterface {
     public static final int IS_PART_TIME = 1;
     public static final int IS_FULL_TIME = 2;
 
-    private List<empwage> companyEmpWageList;
+    private int numOfCompany = 0;
+    private empwage[] companyEmpWageArray;
 
-    public empWageBuilderArray(){
-        companyEmpWageList = new ArrayList<>();
+    public empWageBuilderArray() {
+        companyEmpWageArray = new empwage[5];
     }
 
-    public void addCompanyEmpWage(String company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth){
-        companyEmpWageList.add(new empwage(company,empRatePerHour,numOfWorkingDays,maxHoursPerMonth));
+    @Override
+    public void addCompanyEmpWage(String company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth) {
+        companyEmpWageArray[numOfCompany] = new empwage(company, empRatePerHour, numOfWorkingDays, maxHoursPerMonth);
+        numOfCompany++;
     }
 
-    public void computeEmpWage(){
-        for(empwage companyEmpWage : companyEmpWageList){
-            companyEmpWage.setTotalEmpWage(this.computeEmpWage(companyEmpWage));
-            System.out.println(companyEmpWage);
+    @Override
+    public void computeEmpWage() {
+        for (int i = 0; i < numOfCompany; i++) {
+            companyEmpWageArray[i].setTotalEmpWage(this.computeEmpWage(companyEmpWageArray[i]));
+            System.out.println(companyEmpWageArray[i]);
         }
     }
 
-    private int computeEmpWage(empwage companyEmpWage) {
+
+    public int computeEmpWage(empwage companyEmpWage) {
         int empHrs = 0;
         int totalEmpHrs = 0;
         int totalWorkingDays = 0;
@@ -49,7 +54,7 @@ public class empWageBuilderArray implements empWageBuilderInterface {
     }
 
     public List<empwage> getCompanyEmpWage() {
-        return companyEmpWageList;
+        return Arrays.asList(companyEmpWageArray);
     }
 
     public static void main(String[] args) {
