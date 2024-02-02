@@ -48,7 +48,7 @@ public class empWageBuilderArray {
         return totalEmpHrs * companyEmpWage.empRatePerHour;
     }
 
-    public List<empwage> getCompanyEmpWageList() {
+    public List<empwage> getCompanyEmpWage() {
         return companyEmpWageList;
     }
 
